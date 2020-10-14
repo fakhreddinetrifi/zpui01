@@ -1,0 +1,49 @@
+<div class="container-fluid">
+   <div class="preveiw-container">
+      <div class="d-flex flex-row-reverse" *ngIf="showMarkForSign()">
+         <div class="box-header with-border col-md-12" [align]="'right'">
+            <br>
+            <th style="vertical-align:middle;">
+               <h2 class="box-title" [style.color]="'#006420'"><b>{{ 'DOCUMENT.DOCVIEWER.MARK_FOR_SIGN' | translate }}&nbsp;&nbsp;</b></h2>
+            </th>
+            <th>
+               <label class="switch" matTooltip="Scroll down to enable the button">
+                  <input type="checkbox" id="myToggle" [checked]='setDefaultValue()' [disabled]='disableControl()' (click)="markForSign()">
+                  <span class="slider round"></span>
+               </label>
+            </th>
+         </div>
+      </div>
+   
+      <div class="rounded-md-12 preview-wrapper">
+         <div class="row" *ngIf="!isSupportedDocumentForPreview()">
+            <div class="box-header with-border col-md-12">
+               <h2 class="box-title centred-text" [style.color]="'#006420'"><b>{{ 'DOCUMENT.DOCVIEWER.PREVIEW_NOT_AVAILABLE' | translate }}</b></h2>
+            </div>
+         </div>
+         <div class="row" *ngIf="isSupportedDocumentForPreview() && !loadingCompleted">
+            <div class="box-header with-border col-md-12">
+               <h2 class="box-title" [style.color]="'#006420'"><b>{{ 'DOCUMENT.DOCVIEWER.PREVIEW_NOT_YET_AVAILABLE' | translate }}</b></h2>
+            </div>
+         </div>
+         <div class="ScrollStyle" id="myScrolldiv" (scroll)="onScroll()" [hidden]="!isSupportedDocumentForPreview() || !loadingCompleted" [ngStyle]="{'height':scrollDivHieght()}">
+            <div class="content-preview" *ngIf="doc_viewer!=undefined && doc_viewer!=null">
+               <app-xml-doc-viewer *ngIf="isXMLORDERDocument()" [document]="doc_viewer" (loadingCompleted)=onLoadingCompleted() ></app-xml-doc-viewer>
+               <app-pdf-doc-viewer *ngIf="isPDFDocument()" [document]="doc_viewer" (loadingCompleted)=onLoadingCompleted()></app-pdf-doc-viewer>
+            </div>
+            <div class="rounded-md-12" *ngIf="needToScroll()">
+               <button mat-button class="middle-text" (click)="scrollToTop()">
+                  <i class="fa fa-arrow-circle-up fa-2x" aria-hidden="true"></i>
+                  <span>{{ 'DOCUMENT.DOCVIEWER.BACK_TO_TOP' | translate }}</span>
+               </button>
+            </div>
+         </div>
+      </div>
+   
+      <div class="overlay" *ngIf="isSupportedDocumentForPreview() && !loadingCompleted">
+         <div class="center">
+            <mat-spinner diameter="30"></mat-spinner>
+         </div>
+      </div>
+   </div>
+</div>

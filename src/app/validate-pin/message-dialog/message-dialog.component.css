@@ -1,0 +1,7 @@
+.zp-error-dialog-title * {
+    display: inline-block;
+}
+
+.zp-error-dialog-title i {
+    margin-right: 5px;
+}

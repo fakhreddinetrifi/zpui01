@@ -1,0 +1,51 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+
+body .fa {
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    /* background-color: #f2f2f2; */
+}
+
+.overlay .center .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #006420;
+}
+.example-list-section .mat-checkbox-checked.mat-primary .mat-checkbox-background {
+ background-color:#006420 ;
+}
+.example-list-section .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background {
+ background-color:#006420 ;
+}
+
+/* .box-body .table-responsive .ngx-pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background-color: #006420;
+    color: #fefefe;
+    cursor: default;
+} */
+.listStyle .ngx-pagination .current {
+    background-color: #006420;   
+}
+
+.listStyle ul.ngx-pagination {
+    margin-bottom: 5px
+}
+
+.zp-clickable-icon {
+  cursor: pointer;
+}
+
+.new-container-fluid .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-left: 0px ;
+    padding-right: 0px;
+}
+.new-container-fluid .container-fluid .preveiw-container #myScrolldiv{
+    overflow-x: auto;
+    min-width: 380px;
+}

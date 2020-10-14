@@ -1,0 +1,301 @@
+thead > tr > th {
+  cursor: pointer;
+}
+.table tr.active td {
+  background-color: #b3ffcb !important;
+  color: black;
+}
+
+h1 {
+  font-family: calibri;
+}
+p {
+  font-family: calibri;
+}
+th {
+  font-family: calibri;
+}
+td {
+  font-family: calibri;
+}
+
+/* start css for table */
+body {
+  font-family: "Covered By Your Grace", cursive;
+  line-height: 1.25;
+}
+
+@media screen and (max-width: 960px) {
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .mat-table caption {
+    font-size: 1em;
+  }
+
+  /*  Enable this to hide header
+  .mat-table .mat-header-cell {
+    
+    border: 10px solid;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  */
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+  }
+  /*
+  .mat-table .mat-row:nth-child(even) {background: #CCC}
+  .mat-table .mat-row:nth-child(odd) {background: #FFF}
+  */
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 1em;
+    text-align: right;
+    font-weight: bold;
+    height: 30px;
+    margin-bottom: 4%;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: normal;
+
+    font-size: 0.85em;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:first-child {
+    margin-top: 4%;
+  }
+}
+/* end table css */
+/* Callout box - fixed position at the bottom of the page */
+.callout {
+  position: absolute;
+  margin-left: 1px;
+  width: 100%;
+}
+
+/* Callout header */
+.callout-header {
+  padding: 22px 22px;
+  background: #006420;
+  font-size: 20px;
+  color: white;
+}
+
+/* Callout container/body */
+.callout-container {
+  padding: 5px 10px;
+  background-color: #b3ffcb;
+  color: black;
+}
+
+/* Close button */
+.closebtn {
+  position: absolute;
+  top: 7px;
+  right: 1px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Change color on mouse-over */
+.closebtn:hover {
+  color: lightgrey;
+}
+.example-section {
+  margin: 5px 0;
+}
+
+.example-margin {
+  margin: 0 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 1px;
+}
+
+/* The sidepanel menu */
+.sidepanel {
+  height: 370px; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: absolute; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #ffffff; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 1px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 20px 45px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+/* changing pagination button color */
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.286);
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.overlay .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay .center .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: #006420;
+}
+
+.listStyle {
+  position: relative;
+}
+
+.listStyle table {
+  margin-bottom: 0px;
+}
+
+.listStyle table th,
+.listStyle table td {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.listStyle table thead th .fa {
+  margin-left: 1px;
+}
+
+/* Responsive table */
+
+@media only screen and (max-width: 575px) {
+  /* Force table to not be like tables anymore */
+  .listStyle table,
+  .listStyle tbody,
+  .listStyle tbody tr,
+  .listStyle tbody td {
+    display: block;
+  }
+  .listStyle table thead {
+    display: flex;
+    flex-direction: column;
+  }
+  .listStyle table thead tr {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .listStyle table thead tr th:nth-child(1) {
+    display: none;
+  }
+
+  .listStyle table thead tr th:nth-child(2), .listStyle table thead tr th:nth-child(4), .listStyle table thead tr th:nth-child(5) {
+    width: 20%;
+  }
+
+  .listStyle table thead tr th:nth-child(3) {
+    width: 40%;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+
+  .listStyle tbody tr {
+    border: 1px solid #ccc;
+  }
+
+  .listStyle tbody tr td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .listStyle tbody tr td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 12px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(data-title);
+  }
+}

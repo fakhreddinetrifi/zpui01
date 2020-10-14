@@ -1,0 +1,78 @@
+<div class="box-body table-responsive listStyle">
+  <!--table class="table table-trapped"-->
+  <table class="table" [style.width]="'100%'">
+    <thead [style.backgroundColor]="'#006420'">
+      <tr [style.color]="'white'">
+        <th></th>
+        <th (click)="sort('name')"><span>{{ 'DOCUMENT.DOCLIST.NAME' | translate }}</span><span class="fa fa-long-arrow-up" *ngIf="key === 'name' && !reverse"></span><span class="fa fa-long-arrow-down" *ngIf="key === 'name' && reverse"></span></th>
+        <th (click)="sort('requestedDeliveryDate')"><span>{{ 'DOCUMENT.DOCLIST.REQUESTED_DATE' | translate }}</span><span class="fa fa-long-arrow-up" *ngIf="key === 'requestedDeliveryDate' && !reverse"></span><span class="fa fa-long-arrow-down" *ngIf="key === 'requestedDeliveryDate' && reverse"></span></th>
+        <th (click)="sort('status')"><span>{{ 'DOCUMENT.DOCLIST.STATUS' | translate }}</span><span class="fa fa-long-arrow-up" *ngIf="key === 'status' && !reverse"></span><span class="fa fa-long-arrow-down" *ngIf="key === 'status' && reverse"></span></th>
+        <th (click)="sort('type')"><span>{{ 'DOCUMENT.DOCLIST.TYPE' | translate }}</span><span class="fa fa-long-arrow-up" *ngIf="key === 'type' && !reverse"></span><span class="fa fa-long-arrow-down" *ngIf="key === 'type' && reverse"></span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of documents  | orderBy: key : reverse  | paginate: { itemsPerPage: 4, currentPage: p } ; let i = index" (click)="getCurrentDoc(data,i)" [class.active]="i == HighlightRow">
+        <td>
+          <div class="d-none d-lg-block">
+            <i *ngIf="!isDownloadInProgress(data)" class="fa fa-download iconHover zp-clickable-icon" style="color:#006420;" (click)="downloadContent(data, $event)"></i>
+            <mat-spinner diameter="15" *ngIf="isDownloadInProgress(data)"></mat-spinner>
+          </div>
+          <div class="d-block d-lg-none">
+            <i class="fa fa-info-circle zp-clickable-icon" style="color:#006420;" (click)="onInfoClick(data, $event)"></i>
+          </div>
+        </td>
+        <td attr.data-title="{{ 'DOCUMENT.DOCLIST.NAME' | translate }}">{{ data.name }}</td>
+        <td attr.data-title="{{ 'DOCUMENT.DOCLIST.REQUESTED_DATE' | translate }}">{{ data.requestedDeliveryDate | date:'yyyy-MM-dd' }}</td>
+        <td attr.data-title="{{ 'DOCUMENT.DOCLIST.STATUS' | translate }}">
+          <!-- <i class="far fa-question-circle" style="color:#006420;" aria-hidden="true" title = {{data.status}}></i> -->
+          <i class="fa fa-spinner" style="color:#006420;" aria-hidden="true" title="{{ ('DOCUMENT.DOCLIST.TBODY.STATUS.' + data.status) | translate }}" *ngIf="data.status=='Signature in Progress'"></i>
+          <i class="fa fa-eye" style="color:#006420;" aria-hidden="true" title="{{ ('DOCUMENT.DOCLIST.TBODY.STATUS.' + data.status) | translate }}" *ngIf="data.status=='Ready for Signature'"></i>
+          <i class="fa fa-pencil" style="color:#006420;" aria-hidden="true" title="{{ ('DOCUMENT.DOCLIST.TBODY.STATUS.' + data.status) | translate }}" *ngIf="data.status=='Marked for Signature'"></i>
+        </td>
+        <!--td>{{data.status}}</td-->
+        <td attr.data-title="{{ 'DOCUMENT.DOCLIST.TYPE' | translate }}">{{ ('DOCUMENT.DOCLIST.TBODY.TYPE.' + data.type) | translate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div [align]="'right'">
+    <pagination-controls (pageChange)="onPaginationChange($event)" previousLabel="{{ 'DOCUMENT.DOCLIST.PREVIOUS' | translate }}" nextLabel="{{ 'DOCUMENT.DOCLIST.NEXT' | translate }}"></pagination-controls>
+  </div>
+  <div class="overlay" *ngIf="!loadingCompleted">
+    <div class="center">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  </div>
+</div>
+<div id="navFilter" class="sidepanel">
+  <div class="callout">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <div class="callout-header">{{ 'DOCUMENT.DOCLIST.FILTRE.TITLE' | translate }}</div>
+    <div class="callout-container">
+      <section class="example-section">
+        <span class="example-list-section">
+          <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()" (change)="setAll($event.checked)" color="primary">{{ 'DOCUMENT.DOCLIST.FILTRE.STATUS.STATUS' | translate }}</mat-checkbox>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let status of listStatus">
+              <mat-checkbox [(ngModel)]="status.completed" (ngModelChange)="updateAllComplete(status)" color="primary">{{ ('DOCUMENT.DOCLIST.FILTRE.STATUS.' + status.name) | translate }}</mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </section>
+      <section class="example-section">
+        <span class="example-list-section">
+          <mat-checkbox class="example-margin" [checked]="allComplete_dt" [indeterminate]="someComplete_dt()" (change)="setAll_dt($event.checked)" color="primary">{{ 'DOCUMENT.DOCLIST.FILTRE.TYPE.TYPE' | translate }}</mat-checkbox>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let type of listDoctype">
+              <mat-checkbox [(ngModel)]="type.completed" (ngModelChange)="updateAllComplete_dt(type)" color="primary">{{ ('DOCUMENT.DOCLIST.FILTRE.TYPE.' + type.name) | translate }}</mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </section>
+      <!-- <button id ="search" class="btn btn-outline-success" (click)="filterDocuments(listStats,listType)"> <b>SEARCH</b></button> -->
+    </div>
+  </div>
+</div>

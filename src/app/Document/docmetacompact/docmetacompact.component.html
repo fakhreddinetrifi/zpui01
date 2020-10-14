@@ -1,0 +1,21 @@
+<div id="general-info" class="container-fluid" *ngIf="selectedDoc">
+  <h2 class="box-title" [style.color]="'#006420'"><b>{{ 'DOCUMENT.DOCMETACOMPACT.GENERAL_INFO' | translate }}</b></h2>
+  <div class="row">
+    <div class="col-3"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.NAME' | translate }}:</b></p></div>
+    <div class="col-4"><p *ngIf="selectedDoc">{{ selectedDoc.name }}</p></div>
+    <div class="col-2"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.STATUS' | translate }}:</b></p></div>
+    <div class="col-3"><p *ngIf="selectedDoc">{{ ('DOCUMENT.DOCMETACOMPACT.STATUS.' + selectedDoc.status) | translate }}</p></div>
+  </div>  
+  <div class="row">
+    <div class="col-3"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.CREATED_ON' | translate }}:</b></p></div>
+    <div class="col-4"><p *ngIf="selectedDoc">{{ selectedDoc.creationDate | date:'yyyy-MM-dd' }}</p></div>
+    <div class="col-2"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.TYPE' | translate }}:</b></p></div>
+    <div class="col-3"><p *ngIf="selectedDoc">{{ ('DOCUMENT.DOCMETACOMPACT.TYPE.' + selectedDoc.type) | translate }}</p></div>
+  </div>  
+  <div class="row">
+    <div class="col-3"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.REQUESTED_DELIVERY_DATE' | translate }}:</b> </p></div>
+    <div class="col-4"><p *ngIf="selectedDoc">{{ selectedDoc.requestedDeliveryDate | date:'yyyy-MM-dd' }}</p></div>
+    <div class="col-2"><p class="zp-label"><b>{{ 'DOCUMENT.DOCMETACOMPACT.LABEL.CREATOR' | translate }}:</b></p></div>
+    <div class="col-3"><p *ngIf="selectedDoc">{{ selectedDoc.creator }}</p></div>
+  </div>  
+</div>

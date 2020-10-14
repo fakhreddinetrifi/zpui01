@@ -1,0 +1,35 @@
+h1 {
+  font-family: calibri;
+}
+h2 {
+  font-family: calibri;
+}
+h3 {
+  font-family: calibri;
+}
+h4 {
+  font-family: calibri;
+}
+p {
+  font-family: calibri;
+}
+th {
+  font-family: calibri;
+}
+td {
+  font-family: calibri;
+}
+
+.zp-label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  word-wrap: normal;
+}
+
+#general-info h2.box-title {
+  margin-bottom: 0px;
+}
+
+#general-info > .row > div {
+  padding: 0px 5px;
+}

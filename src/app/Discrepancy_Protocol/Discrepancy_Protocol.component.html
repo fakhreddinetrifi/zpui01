@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <p class="text-justify">Dostway z dnia <strong>{{data.dost}}</strong></p>
+  <p class="text-justify mb-0">Nr sklepu (terminal) <strong>{{data.nr}}</strong></p>
+
+  <div class="form-inline">
+    <div class="form-group w-100">
+        <label>Imie i nazwisko kierowcy pojoazdu</label>
+        <input type="text" class="form-control col-sm-3 ml-4" [(ngModel)] ="data.imie">
+    </div>
+  </div>
+
+  <!--Card of Table-->
+  <div class="card mt-3 w-100" *ngFor="let d of data.obj" >
+    <div class="card-body">
+      <h3 class="card-title">Dotyczy WZ: <strong>{{d.dot}}</strong></h3>
+      <table class="table table-bordered">
+        <thead class="table-active">
+          <tr>
+            <td>Indeks</td>
+            <td>Nazwa towaru</td>
+            <td>Termin</td>
+            <td>Seria</td>
+            <td>IIosc</td>
+            <td>Powod</td>
+            <td>Zwrot</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let content of d.table_obj" >
+            <td class="text-center">{{content.indeks}}</td>
+            <td class="text-center">{{content.nazwa}}</td>
+            <td>
+              <div class="form-row  d-flex justify-content-center">
+                <div class="col-auto">
+                  <input type="date" class="form-control form-control-sm" [(ngModel)] ="content.termin">
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="form-row  d-flex justify-content-center">
+                <div class="col-auto">
+                  <input type="text" class="form-control form-control-sm" [(ngModel)] ="content.seria">
+                </div>
+              </div>
+          </td>
+            <td>
+              <div class="form-row  d-flex justify-content-center">
+                <div class="col-auto">
+                  <input type="text" class="form-control form-control-sm" [(ngModel)] ="content.iiosc">
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="form-row  d-flex justify-content-center">
+                <div class="col">
+                  <select class="custom-select custom-select-sm mr-sm-2" (change)="checkList($event, content.id)">
+                    <option *ngFor="let select of content.powod; let i = index" [value]="select">{{select}}</option>
+                  </select>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="form-row d-flex justify-content-center">
+                <div class="col-auto my-1">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [(ngModel)] ="content.zwrot" [disabled]="content.active">
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 class="card-title">Dodaj uwagi <span><i class="fa fa-commenting ml-2" aria-hidden="true" style="color: orangered;"></i></span></h3>
+      <p class="card-text" *ngFor="let comment of d.comment" >{{comment}}</p>
+    </div>
+  </div>
+
+  <div class="row mt-4 mb-4">
+    <div class="col-2 d-flex justify-content-center">
+      <button type="button" class="btn btn-secondary btn-sm btn-block text-dark">Wroc</button>
+    </div>
+    <div class="col-2 d-flex justify-content-center">
+      <button type="button" class="btn btn-dark btn-sm btn-block">Zapisz roboczy</button>
+    </div>
+    <div class="col d-flex justify-content-center">
+      <button type="button" class="btn btn-secondary btn-sm btn-block" disabled>Podpisz Protokil Rozbieznosci i WZ</button>
+    </div>
+    <div class="col-2 d-flex justify-content-center">
+      <button type="button" class="btn btn-sm btn-block border-0 text-light" style="background-color: orange;">Nie podpisuj</button>
+    </div>
+  </div>
+</div>
+
+

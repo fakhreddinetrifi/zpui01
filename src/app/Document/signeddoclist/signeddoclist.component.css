@@ -1,0 +1,118 @@
+thead>tr>th {
+  cursor: pointer;
+}
+
+h1 {
+  font-family: calibri;
+}
+p {
+  font-family: calibri;
+}
+th {
+  font-family: calibri;
+}
+td {
+  font-family: calibri;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.286);
+  z-index: 10;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.overlay .center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.overlay .center .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #006420;
+}
+
+.listStyle {
+  position: relative;
+}
+
+.listStyle table {
+  margin-bottom: 0px;
+}
+
+.listStyle table th, .listStyle table td {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.listStyle table thead th .fa {
+  margin-left: 1px;
+}
+
+/* Responsive table */
+
+@media only screen and (max-width: 575px) {
+  /* Force table to not be like tables anymore */
+  .listStyle table,
+  .listStyle tbody,
+  .listStyle tbody tr,
+  .listStyle tbody td {
+    display: block;
+  }
+  .listStyle table thead {
+    display: flex;
+    flex-direction: column;
+  }
+  .listStyle table thead tr {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .listStyle table thead tr th:nth-child(1) {
+    display: none;
+  }
+
+  .listStyle table thead tr th:nth-child(2), .listStyle table thead tr th:nth-child(4), .listStyle table thead tr th:nth-child(5) {
+    width: 20%;
+  }
+
+  .listStyle table thead tr th:nth-child(3) {
+    width: 40%;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+
+  .listStyle tbody tr {
+    border: 1px solid #ccc;
+  }
+
+  .listStyle tbody tr td {
+    /* Behave like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 35%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .listStyle tbody tr td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 12px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(data-title);
+  }
+}

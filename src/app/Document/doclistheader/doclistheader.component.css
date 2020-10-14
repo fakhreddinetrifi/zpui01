@@ -1,0 +1,35 @@
+h1, h2, h3, h4, p , th, td { 
+   font-family: calibri;
+}
+
+.zb-header-row {
+   margin: 5px 0px;
+}
+
+.zb-header-row div .row {
+   height: 100%;
+}
+
+.zb-header-row i {
+   margin-right: 10px;
+}
+
+.zb-header-row .zb-header-block-left  {
+   color: #006420;
+}
+
+.zb-header-row .zp-hearder-usename {
+   margin-right: 10px;
+}
+
+/* mouse over link */
+i:hover {
+  color: #b3ffcb;
+   box-shadow: 0 0 0 3px white;
+}
+
+@media only screen and (max-width: 991px) {
+   .zb-header-row {
+      flex-direction: column-reverse;
+   }
+}

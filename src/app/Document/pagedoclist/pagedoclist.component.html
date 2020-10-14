@@ -1,0 +1,42 @@
+<div class=" col-12">
+    <div class="row">
+        <div class="col-12 pad-header">
+            <div class="card">
+                <app-doclistheader [documents]="documents" [shopIdDhc]="shopIdPdc"
+                    (doAuthEvent)="getCurrentUpdate($event)" (needFilters)="filterEvents($event)"
+                    (refreshaction)="refresh($event)"></app-doclistheader>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-12 pad-tab">
+            <div class="card general-info">
+                <app-doclist [(documents)]="documents" (selectedDocument)="getCurrentDoc($event)"
+                    [(needFilters)]="needfilter" (filteredValues)="getFiteredValues($event)"
+                    [loadingCompleted]="loadingCompleted" [docUpdateType]="docUpdateType"
+                    (openPreviewDialog)="onOpenPreviewDialog($event)"></app-doclist>
+            </div>
+            <div class="card general-info" *ngIf="selectedDoc!=undefined && selectedDoc!=null">
+                <app-docmetacompact [selectedDoc]="selectedDoc"></app-docmetacompact>
+            </div>
+            <div class="card general-info">
+                <app-signeddoclist [signedDocdocuments]="signedDocs" [loadingCompleted_sd]="loadingCompleted_sd">
+                </app-signeddoclist>
+            </div>
+        </div>
+        <div class="col-lg-7 col-12 pad-preview" *ngIf="selectedDoc && largeScreen">
+            <div class="card document-viewer preview-center">
+                <app-docviewer [doc_viewer]="selectedDoc" [LL_COOKI_doc_viewer]="LL_COOK"
+                    (chekupdate)="getCurrentUpdate($event)"></app-docviewer>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="footer">
+        <div class="col-12 pad-header">
+            <div class="card">
+                <app-footer></app-footer>
+            </div>
+        </div>
+    </div>
+</div>

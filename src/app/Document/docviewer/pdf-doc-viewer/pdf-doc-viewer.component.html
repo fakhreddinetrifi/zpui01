@@ -1,0 +1,12 @@
+<pdf-viewer [src]="data"
+            [original-size]="true"
+            [fit-to-page]="true"
+            [show-borders]="true"
+            style="display: block;"
+            (after-load-complete)="onAfterLoadComplete()">
+</pdf-viewer>
+
+
+<!-- <ngx-extended-pdf-viewer [src]="data" useBrowserLocale="true" (pdfLoaded)="onAfterLoadComplete()" style="display: block;"></ngx-extended-pdf-viewer> -->
+
+<!-- <object id="pdfObj" [data]="data" type="application/pdf" target="_parent"></object> -->

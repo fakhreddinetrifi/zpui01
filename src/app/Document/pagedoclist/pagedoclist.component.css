@@ -1,0 +1,17 @@
+.pad-header, .pad-tab {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.pad-preview {
+  padding-left: 5px;
+  padding-right: 0px;
+}
+
+.general-info {
+    margin-top: 5px;
+}
+
+.document-viewer {
+  margin-top: 5px;
+}

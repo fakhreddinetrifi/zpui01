@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row zb-header-row">
+    <div class="col-lg-4 col-xl-4 col-12 zb-header-block-left">
+      <div class="row align-items-center">
+        <i class="fa fa-filter" aria-hidden="true" (click)="filtersAction()"></i>
+        <i class="fa fa-refresh" aria-hidden="true" (click)="refresh()"></i>
+        <b style="font-size:1.3em;">{{ 'DOCUMENT.DOCLISTHEADER.DOCUMENT_LIST' | translate }}</b></div>
+      </div>
+    <div class="col-lg-3 col-xl-4 col-12 zb-header-block-center">
+      <div class="row align-items-center justify-content-center">
+        <i class="fa fa-folder" style="color:#006420;" aria-hidden="true"></i>
+        <b style="font-size:20px;">{{ 'DOCUMENT.DOCLISTHEADER.SHOP_ID' | translate }}: {{shopIdDhc}}</b>
+      </div>
+    </div>
+    <div class="col-lg-5 col-xl-4 col-12 zb-header-block-right">
+      <div class="d-flex flex-row-reverse align-items-center">
+        <div>
+          <button id="doauth01" class="btn btn-outline-warning" (click)="openAsseco()" *ngIf="hasDocumentForSignature() && !isAuthorizationReady()"><b>{{ 'DOCUMENT.DOCLISTHEADER.DO_AUTHORIZATION' | translate }}</b></button>
+          <button id="doauth02" class="btn btn-outline-success" (click)="openAssecoFinal()" *ngIf="isAuthorizationReady()"> <b>{{ 'DOCUMENT.DOCLISTHEADER.DO_AUTHORIZATION' | translate }}</b></button>
+          <!-- <button type="clear" class="btn btn-outline-danger" (click)="clearAsseco()" *ngIf="isAuthorizationReady()">
+            <span style="font-size: 24px; color:#006420;">
+              <i class="fa fa-times-circle"></i>
+            </span>
+          </button> -->
+        </div>
+        <span class="zp-hearder-usename">{{ userName }}</span>
+      </div>
+    </div>
+  </div>
+</div>
